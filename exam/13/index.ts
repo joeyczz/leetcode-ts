@@ -31,4 +31,7 @@ function romanToInt(s: string): number {
   return total;
 }
 
-console.log(romanToInt("MCMXCIV"));
+(function () {
+  const result = romanToInt("MCMXCIV");
+  console.log(result);
+})();

@@ -12,7 +12,7 @@ function isMatch(s: string, p: string): boolean {
   let pi = 0;
 
   for (; pi <= plen; pi++) {
-    if (p[pi] === '*') pi += 1;
+    if (p[pi] === "*") pi += 1;
     si = 0;
     for (; si <= slen; si++) {
       if (pi === 0 && si === 0) {
@@ -25,21 +25,21 @@ function isMatch(s: string, p: string): boolean {
   }
 
   function spMatch(pi: number, si: number): boolean {
-    if (p[pi -1] !== "*") {
-      if ( !o[getKey(pi -1, si -1)] ) return false;
-      
-      return equalMatch(p[pi-1], s[si-1]);
+    if (p[pi - 1] !== "*") {
+      if (!o[getKey(pi - 1, si - 1)]) return false;
+
+      return equalMatch(p[pi - 1], s[si - 1]);
     }
 
-    if (p[pi -1] === "*") {
+    if (p[pi - 1] === "*") {
+      if (o[getKey(pi - 2, si)]) return true;
 
-       if (o[getKey(pi - 2, si)]) return true;
+      if (o[getKey(pi - 2, si - 1)] && equalMatch(p[pi - 2], s[si - 1]))
+        return true;
 
-       if (o[getKey(pi - 2, si -1)] && equalMatch(p[pi-2], s[si-1])) return true;
-      
-       if (o[getKey(pi, si -1 )]  && equalMatch(p[pi-2], s[si-1])) return true;
-       return false;
-
+      if (o[getKey(pi, si - 1)] && equalMatch(p[pi - 2], s[si - 1]))
+        return true;
+      return false;
     }
   }
 
@@ -48,15 +48,11 @@ function isMatch(s: string, p: string): boolean {
   return o[`${plen},${slen}`] ?? false;
 }
 
-const equalMatch = (p: string, s: string) => (p === "." || p === s);
+const equalMatch = (p: string, s: string) => p === "." || p === s;
 
 const getKey = (pi: number, si: number) => `${pi},${si}`;
 
-const result = isMatch("aab" /* s */, "c*a*b" /* p */);
-
-// "aab"
-// "c*a*b"
-// "aa"
-// "a*"
-console.log(result);
-
+(function () {
+  const result = isMatch("aab" /* s */, "c*a*b" /* p */);
+  console.log(result);
+})();

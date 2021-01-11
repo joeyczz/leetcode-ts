@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "exam": "ts-node"
+    "exam": "ts-node",
+    "prettier": "prettier ./exam --write"
   },
   "dependencies": {
     "ts-node": "^9.1.1",
