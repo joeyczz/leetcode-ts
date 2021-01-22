@@ -1,3 +1,13 @@
+/**
+ * 构建 (\s*) p.substr(0, n)
+ * 对应可匹配的 s.substr(0, m)
+ * o[n, m] = true/false
+ *
+ * o[n+1, m+1] = o[n, m] && p[n+1] 能匹配 s[m+1]
+ *
+ * @param s
+ * @param p
+ */
 function isMatch(s: string, p: string): boolean {
   const plist = p.split("");
   const plen = plist.length;
