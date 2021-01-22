@@ -20,9 +20,9 @@ function convert(s: string, numRows: number): string {
 }
 
 (function () {
+  console.time("d");
   // const result = longestPalindrome("cabbad");
   // const result = longestPalindrome("mbabadm");
-  console.time("d");
   // const result = convert("PAYPALISHIRING", 4);
   // const result = convert("A", 1);
   const result = convert("ABCD", 3);

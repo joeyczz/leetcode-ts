@@ -9,7 +9,9 @@ function removeDuplicates(nums: number[]): number {
 }
 
 (function () {
+  console.time("d");
   const list = [1, 1, 2];
   const result = removeDuplicates(list);
   console.log(result, list);
+  console.timeEnd("d");
 })();
