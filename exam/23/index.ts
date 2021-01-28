@@ -23,16 +23,16 @@ class ListNode {
 function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
   if (!lists?.length) return null;
 
-  const curMap: { [key in string]: ListNode } = {};
+  const curMap: { [key in string]: ListNode | null } = {};
 
   for (let i = 0; i < lists.length; i++) {
-    curMap[i] = lists[i];
+    curMap[i] = lists[i]!;
   }
 
-  let node: ListNode = null;
-  let lastNode: ListNode = node;
+  let node: ListNode | null = null;
+  let lastNode: ListNode | null = node;
   while (!endNode(curMap)) {
-    let minNode: ListNode = null;
+    let minNode: ListNode | null = null;
     let minIndex;
 
     for (let i = 0; i < lists.length; i++) {
@@ -48,16 +48,16 @@ function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
     if (!node) {
       node = minNode;
     } else {
-      lastNode.next = minNode;
+      lastNode!.next = minNode;
     }
     lastNode = minNode;
-    curMap[minIndex] = minNode.next;
+    curMap[`${minIndex}`] = minNode!.next;
   }
 
   return node;
 }
 
-function endNode(map: { [key in string]: ListNode }) {
+function endNode(map: { [key in string]: ListNode | null }) {
   let empty = true;
   for (let key in map) {
     if (map[key]) empty = false;
@@ -70,7 +70,7 @@ function endNode(map: { [key in string]: ListNode }) {
   const a = new ListNode(1, new ListNode(4, new ListNode(5)));
   const b = null;
   const c = new ListNode(2, new ListNode(6));
-  const list: ListNode[] = [a, b, c];
+  const list: (ListNode | null)[] = [a, b, c];
   const result = mergeKLists(list);
   console.log(JSON.stringify(result));
 })();

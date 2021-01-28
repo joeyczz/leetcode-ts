@@ -112,13 +112,13 @@
     }
 
     let node: ListNode = new ListNode(0);
-    let lastNode: ListNode = node;
+    let lastNode: ListNode | null = node;
     while (!queue.isEmpty()) {
-      const _n = queue.pool();
-      lastNode.next = _n;
-      lastNode = lastNode.next;
+      const _n: ListNode | null = queue.pool();
+      lastNode!.next = _n;
+      lastNode = lastNode!.next;
 
-      if (_n.next) queue.add(_n.next);
+      if (_n?.next) queue.add(_n.next);
     }
 
     return node.next;
@@ -129,7 +129,7 @@
     const a = new ListNode(1, new ListNode(4, new ListNode(5)));
     const b = null;
     const c = new ListNode(2, new ListNode(6));
-    const list: ListNode[] = [a, b, c];
+    const list: (ListNode | null)[] = [a, b, c];
     const result = mergeKLists(list);
     console.log(JSON.stringify(result));
   })();
