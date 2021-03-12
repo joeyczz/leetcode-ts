@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "exam": "ts-node",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./",
+    "lint": "eslint . --ext .js,.ts",
     "prettier": "prettier ./ --write"
   },
   "devDependencies": {
