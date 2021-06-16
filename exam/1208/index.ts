@@ -21,10 +21,10 @@ function equalSubstring(s: string, t: string, maxCost: number): number {
   return right - left;
 }
 
-(function () {
-  console.time("d");
-  const result = equalSubstring("krrgw", "zjxss", 19);
-  // const result = equalSubstring("abcd", "bcdf", 3);
-  console.log(result);
-  console.timeEnd("d");
-})();
+console.time("d");
+const result = equalSubstring("krrgw", "zjxss", 19);
+// const result = equalSubstring("abcd", "bcdf", 3);
+console.log(result);
+console.timeEnd("d");
+
+export default equalSubstring;
