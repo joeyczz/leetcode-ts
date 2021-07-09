@@ -17,10 +17,10 @@ function fairCandySwap(A: number[], B: number[]): number[] {
   return [];
 }
 
-(function () {
-  console.time("d");
-  const result = fairCandySwap([1, 1], [2, 2]);
-  // const result = fairCandySwap([1, 7, 3, 6, 5, 6]);
-  console.log(result);
-  console.timeEnd("d");
-})();
+console.time("d");
+const result = fairCandySwap([1, 1], [2, 2]);
+// const result = fairCandySwap([1, 7, 3, 6, 5, 6]);
+console.log(result);
+console.timeEnd("d");
+
+export default fairCandySwap;
